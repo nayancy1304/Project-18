@@ -63,19 +63,17 @@ function draw() {
       treasureCollection=treasureCollection + 50;
       cashG.destroyEach();
     }
-   if (diamondsG.isTouching(boy)) {
+   else if (diamondsG.isTouching(boy)) {
       treasureCollection=treasureCollection + 100;
       diamondsG.destroyEach();  
-    if(jwelleryG.isTouching(boy)) {
+   }
+    else if(jwelleryG.isTouching(boy)) {
       treasureCollection= treasureCollection + 150;
       jwelleryG.destroyEach();
     }
-   if(swordGroup.isTouching(boy)) {
+   else{ if(swordGroup.isTouching(boy)) {
      gameState=END;
-    }
-      } 
-    else if (gameState === END) {
-      boy.changeAnimation("SahilRunning",endImg);
+      boy.addAnimation("SahilRunning",endImg);
       boy.x=200;
       boy.y=300;
       boy.scale=0.6;
@@ -89,22 +87,22 @@ function draw() {
       swordGroup.setVelocityYEach(0);
     }
   }
-  
+
   drawSprites();
   textSize(20);
   fill(255);
-  text("Treasure: "+ treasureCollection,150,30);
+  text("Treasure: "+ treasureCollection,width-150,30);
 
-
+  }
 }
 
 function createCash() {
-  if (World.frameCount % 100 == 0) {
+  if (World.frameCount % 200 == 0) {
   var cash = createSprite(Math.round(random(50, width-50),40, 10, 10));
   cash.addImage(cashImg);
   cash.scale=0.12;
   cash.velocityY = 3;
-  cash.lifetime = 150;
+  cash.lifetime = 250;
   cashG.add(cash);
   cash.debug = true;
   }
@@ -116,7 +114,7 @@ function createDiamonds() {
   diamonds.addImage(diamondsImg);
   diamonds.scale=0.03;
   diamonds.velocityY = 3;
-  diamonds.lifetime = 150;
+  diamonds.lifetime = 250;
   diamondsG.add(diamonds);
   diamonds.debug = true;
 }
@@ -128,7 +126,7 @@ function createJwellery() {
   jwellery.addImage(jwelleryImg);
   jwellery.scale=0.13;
   jwellery.velocityY = 3;
-  jwellery.lifetime = 150;
+  jwellery.lifetime = 250;
   jwelleryG.add(jwellery);
   jwellery.debug= true;
   }
@@ -140,7 +138,7 @@ function createSword(){
   sword.addImage(swordImg);
   sword.scale=0.1;
   sword.velocityY = 3;
-  sword.lifetime = 150;
+  sword.lifetime = 250;
   swordGroup.add(sword);
   sword.debug = true;
   }
